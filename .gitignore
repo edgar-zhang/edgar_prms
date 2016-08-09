@@ -15,6 +15,10 @@
 
 # Java class files
 *.class
+target/*
+web_home/target/*
+common/target/*
+tools/target/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
