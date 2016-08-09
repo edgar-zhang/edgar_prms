@@ -19,6 +19,10 @@ target/*
 web_home/target/*
 common/target/*
 tools/target/*
+dao/target/*
+service/target/*
+demo/target/*
+domain/target/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

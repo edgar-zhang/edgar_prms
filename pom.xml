@@ -26,6 +26,8 @@
         <module>service</module>
         <!--POJO 实体类管理包。 -->
         <module>domain</module>
+        <!--个人 demo 知识点 学习。-->
+        <module>demo</module>
     </modules>
 
     <!-- 版本管理 -->
@@ -245,7 +247,7 @@
                 <version>1.10</version>
             </dependency>
 
-            <!-- Other Common libs Begin -->
+            <!-- Other Common libs END -->
 
         </dependencies>
     </dependencyManagement>
