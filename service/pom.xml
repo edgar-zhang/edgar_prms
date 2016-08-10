@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sjn_edgar.prms</groupId>
+    <groupId>prms</groupId>
     <artifactId>service</artifactId>
     <packaging>jar</packaging>
-    <name>com.sjn_edgar.prms.services</name>
+    <name>prms.services</name>
     <!--service 对外服务暴露接口 -->
     <description>The service of foreign service interfaces.</description>
 

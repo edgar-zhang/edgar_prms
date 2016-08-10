@@ -9,12 +9,56 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sjn_edgar.prms</groupId>
+    <groupId>prms</groupId>
     <artifactId>web_home</artifactId>
     <packaging>war</packaging>
-    <name>com.sjn_edgar.prms.home</name>
+    <name>prms.home</name>
     <!-- 后台管理入口。 -->
     <description>Background management entrance.</description>
 
+    <!--配置依赖-->
+    <dependencies>
+        <dependency>
+            <!-- 依懒公共包 -->
+            <groupId>prms</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>prms_home_web</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.15.v20140411</version>
+                <configuration>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <stopKey>stop</stopKey>
+                    <stopPort>9999</stopPort>
+                    <webAppConfig>
+                        <contextPath>/</contextPath>
+                    </webAppConfig>
+                    <!--配置jetty 服务器 -->
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8080</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                </configuration>
+            </plugin>
+            <!--配置maven 集成 tomcat 服务器插件 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

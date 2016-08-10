@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sjn_edgar.prms</groupId>
+    <groupId>prms</groupId>
     <artifactId>tools</artifactId>
     <packaging>jar</packaging>
-    <name>com.sjn_edgar.prms.tools</name>
+    <name>prms.tools</name>
     <!--工具包类-->
     <description>This is a tools packages.</description>
 

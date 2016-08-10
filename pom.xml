@@ -7,7 +7,7 @@
     <groupId>com.sjn_edgar</groupId>
     <artifactId>prms</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>com.sjn_edgar.prms</name>
+    <name>prms</name>
     <packaging>pom</packaging>
     <!--这是我个人仓库，集成个人学习资源。-->
     <description>This is my personal warehouse, integrated personal learning resources.</description>
@@ -36,13 +36,14 @@
 
         <junit.version>4.11</junit.version>
         <spring.version>4.1.7.RELEASE</spring.version>
+        <aspectjrt.version>1.5.4</aspectjrt.version>
+        <aspectjweaver.version>1.8.9</aspectjweaver.version>
         <mybatis.version>3.4.0</mybatis.version>
         <mybatis-spring.version>1.3.0</mybatis-spring.version>
         <slf4j_version>1.7.21</slf4j_version>
         <log4j_version>1.2.17</log4j_version>
         <mysql.version>5.1.30</mysql.version>
         <dbcp.version>1.4</dbcp.version>
-
         <javaee-api.version>7.0</javaee-api.version>
         <cglib.version>3.2.2</cglib.version>
         <jstl.version>1.2</jstl.version>
@@ -50,8 +51,9 @@
         <fastjson.version>1.2.11</fastjson.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-io.version>2.5</commons-io.version>
-
-
+        <jdom.version>2.0.2</jdom.version>
+        <activeMQ.version>5.11.4</activeMQ.version>
+        <jackson.version>2.7.3</jackson.version>
     </properties>
 
     <!--jar 包依赖  -->
@@ -106,6 +108,16 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-instrument</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-instrument-tomcat</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
                 <version>${spring.version}</version>
             </dependency>
@@ -145,7 +157,25 @@
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc-portlet</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
             <!--spring lib end-->
+
+            <!-- Spring aop libs Begin -->
+            <dependency>
+                <groupId>aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectjrt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+            </dependency>
+            <!-- Spring aop libs End -->
 
             <!-- MyBatis libs Begin -->
             <dependency>
@@ -246,14 +276,87 @@
                 <artifactId>commons-codec</artifactId>
                 <version>1.10</version>
             </dependency>
+            <!--Jaxen的是一个Java编写的开源的XPath库。这是适应多种不同的对象模型，
+            包括DOM，XOM，dom4j和JDOM。也可以作为适配器，
+            转换Java字节代码或XML的Java bean为xml，从而使您可以使用XPath查询这些树了。-->
+            <dependency>
+                <groupId>jaxen</groupId>
+                <artifactId>jaxen</artifactId>
+                <version>1.1.6</version>
+            </dependency>
 
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.0.0.GA</version>
+            </dependency>
+
+            <!-- 后台校验 -->
+            <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.1.3.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-all</artifactId>
+                <version>${activeMQ.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-pool</artifactId>
+                <version>${activeMQ.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jdom</groupId>
+                <artifactId>jdom</artifactId>
+                <version>${jdom.version}</version>
+            </dependency>
             <!-- Other Common libs END -->
+
+            <!--Jackson可以轻松的将Java对象转换成json对象和xml文档，同样也可以将json、xml转换成Java对象。-->
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
 
     <!-- 打包插件 -->
     <build>
+        <defaultGoal>install</defaultGoal>
+        <finalName>${project.parent.artifactId}-${project.artifactId}-${project.version}
+        </finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -298,6 +401,43 @@
             </plugin>
         </plugins>
     </build>
+
+    <!--配置maven web运行环境 -->
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+                <!-- 本地数据库 -->
+                <jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/prms?useUnicode=true&amp;characterEncoding=UTF-8]]></jdbc.url>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password>zhangbo</jdbc.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+                <jdbc.encoding>utf-8</jdbc.encoding>
+                <!-- 测试数据库 -->
+                <jdbc.url><![CDATA[jdbc:mysql://101.201.140.215:3306/prms?useUnicode=true&amp;characterEncoding=UTF-8]]></jdbc.url>
+                <jdbc.username>qmz</jdbc.username>
+                <jdbc.password>qmz123</jdbc.password>
+                <logger.root>E:\logs</logger.root>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+                <!-- 生成环境数据库 -->
+                <jdbc.url><![CDATA[jdbc:mysql://192.168.8.114:3306/prms?useUnicode=true&amp;characterEncoding=UTF-8]]></jdbc.url>
+                <jdbc.username></jdbc.username>
+                <jdbc.password></jdbc.password>
+                <logger.root>/data/log/songguo</logger.root>
+            </properties>
+        </profile>
+    </profiles>
 
     <!-- developer -->
     <developers>
