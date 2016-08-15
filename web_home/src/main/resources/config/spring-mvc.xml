@@ -51,8 +51,8 @@
 
 
     <!-- 静态资源问题，不需要进行拦截过滤，主要是针对css，js，image等资源 -->
-    <mvc:resources mapping="/pages/common/**" location="/pages/common/" cache-period="31536000" />
-    <mvc:resources mapping="/pages/dwz/**" location="/pages/dwz/" cache-period="31536000" />
+    <mvc:resources mapping="/pages/common/**" location="/common/" cache-period="31536000" />
+    <mvc:resources mapping="/pages/dwz/**" location="/dwz/" cache-period="31536000" />
 <!--
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
 -->
