@@ -18,6 +18,7 @@
 target/*
 web_home/target/*
 common/target/*
+core/target/*
 tools/target/*
 dao/target/*
 service/target/*

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>prms</groupId>
+    <groupId>com.sjn_edgar.prms</groupId>
     <artifactId>dao</artifactId>
     <packaging>jar</packaging>
     <name>prms.dao</name>

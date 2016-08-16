@@ -9,13 +9,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>prms</groupId>
+    <groupId>com.sjn_edgar.prms</groupId>
     <artifactId>domain</artifactId>
     <packaging>jar</packaging>
     <name>prms.domain</name>
     <!--POJO 实体类管理包。 -->
     <description>POJO entity class management package.</description>
 
+    <!--配置依赖-->
+    <dependencies>
+        <!--依赖common 公共包-->
+        <dependency>
+            <groupId>com.sjn_edgar.prms</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

@@ -1,6 +1,6 @@
 package com.sjn_edgar.prms.service.exception;
 
-/**@Title:     业务异常基类
+/**@Title:     业务异常基类 (继承运行异常)
  * @Description:  <p> 所有业务异常都必须继承于此异常 .</p>
  * @author         edgar【zbo@51qmz.cn】
  * @version        V 1.0
@@ -8,31 +8,9 @@ package com.sjn_edgar.prms.service.exception;
  */
 public class BizException extends RuntimeException {
 
+    //序列化版本号
     private static final long serialVersionUID = -5875371379845226068L;
 
-    /**
-     * 数据库操作,insert返回0
-     */
-    public static final BizException DB_INSERT_RESULT_0 = new BizException(
-            10040001, "数据库操作,insert返回0");
-
-    /**
-     * 数据库操作,update返回0
-     */
-    public static final BizException DB_UPDATE_RESULT_0 = new BizException(
-            10040002, "数据库操作,update返回0");
-
-    /**
-     * 数据库操作,selectOne返回null
-     */
-    public static final BizException DB_SELECTONE_IS_NULL = new BizException(
-            10040003, "数据库操作,selectOne返回null");
-
-    /**
-     * 数据库操作,list返回null
-     */
-    public static final BizException DB_LIST_IS_NULL = new BizException(
-            10040004, "数据库操作,list返回null");
 
     /**
      * Token 验证不通过
@@ -93,7 +71,7 @@ public class BizException extends RuntimeException {
 
     /**
      * 实例化异常
-     * 
+     *
      * @param msgFormat
      * @param args
      * @return

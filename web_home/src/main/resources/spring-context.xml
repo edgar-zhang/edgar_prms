@@ -16,10 +16,6 @@
     <!-- proxy-target-class默认"false",更改为"ture"使用CGLib动态代理 -->
     <aop:aspectj-autoproxy proxy-target-class="true" />
 
-<!--
-    <import resource="classpath:spring/spring-context-service.xml" />
--->
-<!--
-    <import resource="classpath:spring/permission/spring-shiro.xml" />
--->
+    <!--<import resource="classpath:spring-context-service.xml" />-->
+    <!--<import resource="classpath:config/permission/spring-shiro.xml" />-->
 </beans>

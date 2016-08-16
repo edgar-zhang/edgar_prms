@@ -21,7 +21,7 @@
     <dependencies>
         <!--依懒common 包-->
         <dependency>
-            <groupId>prms</groupId>
+            <groupId>com.sjn_edgar.prms</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
