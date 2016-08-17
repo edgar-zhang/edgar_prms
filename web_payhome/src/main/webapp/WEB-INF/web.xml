@@ -91,8 +91,8 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-  <!-- shiro 安全过滤器 -->
- <!-- <filter>
+  <!-- mapper.shiro 安全过滤器 -->
+  <filter>
     <filter-name>shiroFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     <async-supported>true</async-supported>
@@ -106,20 +106,19 @@
     <filter-name>shiroFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
--->
 <!--
    验证码过滤器需要放到Shiro之后 因为Shiro将包装HttpSession
    如果没有放在shiro后，可能造成两次的sesison id 不一样
 -->
-  <!--<filter>
+  <filter>
     <filter-name>rcCaptchaFilter</filter-name>
-    <filter-class>com.sjn_edgar.prms.home.permission.filter.RcCaptchaFilter</filter-class>
+    <filter-class>com.sjn_edgar.prms.payhome.shiro.filter.RcCaptchaFilter</filter-class>
     <async-supported>true</async-supported>
   </filter>
   <filter-mapping>
     <filter-name>rcCaptchaFilter</filter-name>
     <url-pattern>/rcCaptcha.jpg</url-pattern>
-  </filter-mapping>-->
+  </filter-mapping>
 
 
   <!-- 会话超时时间 -->

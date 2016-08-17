@@ -16,8 +16,6 @@
     <modules>
         <!--工具包类-->
         <module>tools</module>
-        <!-- 后台管理入口。 -->
-        <module>web_home</module>
         <!--这是一个公共资源包。-->
         <module>common</module>
         <!--持久层框架 服务暴露 DAO 入口。 -->

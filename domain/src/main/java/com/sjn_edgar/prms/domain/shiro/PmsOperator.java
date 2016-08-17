@@ -1,6 +1,7 @@
 package com.sjn_edgar.prms.domain.shiro;
-
-import com.sjn_edgar.prms.domain.permission.PermissionBaseEntity;
+/*
+* Copyright (c) 2016 www.51cjhb.com. All Rights Reserved.
+*/
 
 /**@Title:     权限管理类
  * @Description:  <p> 权限管理-操作员 </p>

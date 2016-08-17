@@ -2,7 +2,7 @@ package com.sjn_edgar.prms.payhome.exception;/*
 * Copyright (c) 2016 www.51cjhb.com. All Rights Reserved.
 */
 
-import com.sjn_edgar.prms.service.exception.BizException;
+import com.sjn_edgar.prms.tools.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,8 +30,8 @@ public class PermissionException extends BizException {
 	/** 分配菜单权限时，角色不能为空 **/
 	public static final Integer PERMISSION_ASSIGN_MENU_ROLE_NULL = 1003;
 
-	/** 对接龙果平台用户体系异常 **/
-	//public static final Integer RONCOO_NETWORK_EXCEPTION = 1004;
+	/** 对接edgar_prms 支付平台用户体系异常 **/
+	public static final Integer RONCOO_NETWORK_EXCEPTION = 1004;
 
 
 	public PermissionException() {

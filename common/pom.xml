@@ -42,7 +42,7 @@
         <activeMQ.version>5.11.4</activeMQ.version>
         <!--Jackson json 处理lib -->
         <jackson.version>2.7.3</jackson.version>
-        <!--shiro 权限管理处理lib -->
+        <!--mapper.shiro 权限管理处理lib -->
         <shiro.version>1.2.5</shiro.version>
     </properties>
 
@@ -326,7 +326,7 @@
         </dependency>
         <!--Json lib END-->
 
-        <!--shiro 权限管理 -->
+        <!--mapper.shiro 权限管理 -->
         <!-- Shiro libs Begin -->
         <dependency>
             <groupId>org.apache.shiro</groupId>

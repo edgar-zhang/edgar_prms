@@ -21,13 +21,20 @@
 		  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:mq_config.properties</value>
-				<value>classpath:jdbc.properties</value>
+				<!--配置消息队列-->
+				<!--<value>classpath:base/mq_config.properties</value>-->
+				<!--配置数据源-->
+				<value>classpath:base/jdbc.properties</value>
 			</list>
 		</property>
 	</bean>
 
+	<!-- 配置spring 管理ORM框架  mybatis -->
 	<import resource="classpath:spring/spring-mybatis.xml" />
+	<!-- 配置spring 管理消息队列 activemq -->
+<!--
 	<import resource="classpath:spring/spring-activemq.xml" />
-	<import resource="classpath:spring/spring-reconciliation.xml" />
+-->
+	<!-- 配置spring 管理 支付对账bean -->
+	<!--<import resource="classpath:spring/spring-reconciliation.xml" />-->
 </beans>

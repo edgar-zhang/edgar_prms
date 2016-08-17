@@ -45,7 +45,7 @@
 
 
 	<!-- 基于Form表单的身份验证过滤器，为了控制验证码 -->
-	<bean id="authcFilter" class="com.sjn_edgar.prms.home.permission.filter.RcFormAuthenticationFilter">
+	<bean id="authcFilter" class="com.sjn_edgar.prms.payhome.shiro.filter.RcFormAuthenticationFilter">
 		<!-- from表达提交参数的属性命名 -->
 		<property name="usernameParam" value="loginName" />
 		<property name="passwordParam" value="roncooPwd" />
@@ -55,9 +55,12 @@
 	</bean>
 
 	<!-- 验证码验证过滤器 -->
-	<bean id="rcCaptchaValidateFilter" class="com.sjn_edgar.prms.home.permission.filter.RcCaptchaValidateFilter">
+	<bean id="rcCaptchaValidateFilter" class="com.sjn_edgar.prms.payhome.shiro.filter.RcCaptchaValidateFilter">
+		<!-- 是否开启验证码支持 -->
 		<property name="captchaEbabled" value="true" />
+		<!-- 前台提交的验证码参数名 -->
 		<property name="captchaParam" value="captchaCode" />
+		<!-- 验证码验证失败后存储到的属性名 -->
 		<property name="failureKeyAttribute" value="shiroLoginFailure" />
 	</bean>
 
@@ -79,8 +82,7 @@
 				<!-- Shiro的Web过滤器 -->
 				/rcCaptcha* = anon
 				/system/unauthorized.jsp = anon
-				/core/** = anon
-				/dwz/** =anon
+				/static/** = anon
 				/favicon.ico=anon
 				/login = rcCaptchaValidate,authc
 				/logout = logout
@@ -92,7 +94,14 @@
 	<!-- Shiro生命周期处理器 -->
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 
-	<import resource="classpath:config/permission/spring-cache.xml" />
+	<!-- 注入shiro 缓存管理器 -->
+	<import resource="classpath:config/shiro/spring-cache.xml" />
 
+
+	<!-- 定义aop切面，用于代理如@RequiresPermissions注解的控制器，进行权限控制。 -->
+	<aop:config proxy-target-class="true"></aop:config>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
 
 </beans>

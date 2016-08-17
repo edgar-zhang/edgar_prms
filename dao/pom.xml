@@ -16,5 +16,20 @@
     <!--持久层框架 服务暴露 DAO 入口。 -->
     <description>The persistence layer framework service exposure DAO entrance.</description>
 
+    <!--依赖管理-->
+    <dependencies>
+        <!--依赖domain 实体包-->
+        <dependency>
+            <groupId>com.sjn_edgar.prms</groupId>
+            <artifactId>domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--依赖tools 工具包-->
+        <dependency>
+            <groupId>com.sjn_edgar.prms</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

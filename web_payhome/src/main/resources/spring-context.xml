@@ -19,6 +19,8 @@
     <!-- 整合shiro权限框架 -->
     <import resource="classpath:config/shiro/spring-shiro.xml" />
 
+    <!-- mybatis 及 database 配置 -->
+    <import resource="classpath:spring-context-service.xml" />
 
 
 </beans>

@@ -1,7 +1,7 @@
 
 package com.sjn_edgar.prms.core.entity;
 
-import com.sjn_edgar.prms.tools.StringUtils;
+import com.sjn_edgar.prms.tools.string.StringUtils;
 
 import java.util.Date;
 

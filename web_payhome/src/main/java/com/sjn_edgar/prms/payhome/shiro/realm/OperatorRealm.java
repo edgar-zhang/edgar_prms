@@ -1,15 +1,22 @@
-package com.sjn_edgar.prms.payhome.shiro.realm;/*
+package com.sjn_edgar.prms.payhome.shiro.realm;
+/*
 * Copyright (c) 2016 www.51cjhb.com. All Rights Reserved.
 */
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sjn_edgar.prms.domain.shiro.PmsOperator;
+import com.sjn_edgar.prms.payhome.exception.PermissionException;
 import com.sjn_edgar.prms.service.shiro.PmsOperatorRoleService;
 import com.sjn_edgar.prms.service.shiro.PmsOperatorService;
 import com.sjn_edgar.prms.service.shiro.PmsRolePermissionService;
+import com.sjn_edgar.prms.tools.constant.ConstantCode;
+import com.sjn_edgar.prms.tools.constant.PublicStatusEnum;
+import com.sjn_edgar.prms.tools.http.HttpClientUtils;
+import com.sjn_edgar.prms.tools.security.PasswordHelper;
+import com.sjn_edgar.prms.tools.security.PayHomeSignUtils;
+import com.sjn_edgar.prms.tools.security.SecurityUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -54,7 +61,7 @@ public class OperatorRealm extends AuthorizingRealm {
 
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
-		Subject subject = SecurityUtils.getSubject();
+		Subject subject = org.apache.shiro.SecurityUtils.getSubject();
 		Session session = subject.getSession();
 		PmsOperator operator = (PmsOperator) session.getAttribute("PmsOperator");
 		if (operator == null) {
@@ -109,11 +116,9 @@ public class OperatorRealm extends AuthorizingRealm {
 			String pwd = new String((char[]) token.getCredentials());
 			//设置登录时间戳
 			Long timeStamp = System.currentTimeMillis();
-			String key = "rcPayLoginSign268";
-			String sign = RonCooSignUtil.getSign(key, timeStamp, loginName);
+			String sign = PayHomeSignUtils.getSign(ConstantCode.operatorRealm_key, timeStamp, loginName);
 
-			// String url =
-			// "http://192.168.1.181:8080/roncoo-dev-admin/mydata/getByLoginName";
+			// String url = "http://192.168.1.181:8080/roncoo-dev-admin/mydata/getByLoginName";
 			String url = "http://boss.roncoo.com/mydata/getByLoginName";
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("userName", loginName);
@@ -122,7 +127,7 @@ public class OperatorRealm extends AuthorizingRealm {
 
 			String json = JSON.toJSONString(params);
 
-			String httpResponse = RoncooHttpClientUtils.post(url, json);
+			String httpResponse = HttpClientUtils.post(url, json);
 			if (httpResponse.length() < 2) {
 				throw new PermissionException(PermissionException.RONCOO_NETWORK_EXCEPTION, "网络异常,请联系龙果管理员");
 			}
@@ -137,16 +142,16 @@ public class OperatorRealm extends AuthorizingRealm {
 				String returnPWD = (String) mapInfo.get("pwd");
 				String userId = (String) mapInfo.get("userId");
 				String str = userId.trim() + pwd.trim();
-				String getPwd = EncryptUtil.encodeSHAString(str);
+				String getPwd = SecurityUtils.encodeSHAString(str);
 
 				if (getPwd.trim().equals(returnPWD.trim())) {
 
-					String salt = "183d9f2f0f2ce760e98427a5603d1c73";
-					String password = PasswordHelper.getPwd(pwd, salt);
+					String password = PasswordHelper.getPwd(pwd, ConstantCode.pwd_salt);
 					// 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
-					SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(loginName, // 登录名
+					SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+							loginName, // 登录名
 							password, // 密码
-							ByteSource.Util.bytes(salt),// salt=username+salt
+							ByteSource.Util.bytes(ConstantCode.pwd_salt),// salt=username+salt
 							getName() // realm name
 					);
 					return authenticationInfo;
@@ -202,6 +207,9 @@ public class OperatorRealm extends AuthorizingRealm {
 		getAuthenticationCache().clear();
 	}
 
+	/**
+	 * 清除所有缓存
+	 */
 	public void clearAllCache() {
 		clearAllCachedAuthenticationInfo();
 		clearAllCachedAuthorizationInfo();

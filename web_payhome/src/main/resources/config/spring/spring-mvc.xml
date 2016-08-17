@@ -55,9 +55,9 @@
 <!--
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
 -->
-
+    <!--springMVC 配置shiro 权限框架 -->
 <!--
-    <import resource="classpath:config/permission/spring-mvc-shiro.xml" />
+    <import resource="classpath:config/shiro/spring-mvc-shiro.xml" />
 -->
 
 </beans>

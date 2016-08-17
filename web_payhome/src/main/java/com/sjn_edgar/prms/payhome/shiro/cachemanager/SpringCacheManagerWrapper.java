@@ -12,7 +12,7 @@ import org.springframework.cache.support.SimpleValueWrapper;
 import java.util.*;
 
 /**
- * <p>Title:shiro 缓存管理器类 </p>
+ * <p>Title:mapper.shiro 缓存管理器类 </p>
  * <p>Description: 包装Spring cache抽象. </p>
  *
  * @author edgar 【zbo@51qmz.cn】

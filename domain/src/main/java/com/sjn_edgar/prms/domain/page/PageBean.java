@@ -1,5 +1,7 @@
 package com.sjn_edgar.prms.domain.page;
-
+/*
+* Copyright (c) 2016 www.51cjhb.com. All Rights Reserved.
+*/
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,19 +38,14 @@ public class PageBean<T> implements Serializable {
 
     /**
      * 计算总页数 .
-     * 
-     * @param totalCount
-     *            总记录数.
-     * @param numPerPage
-     *            每页记录数.
+     * @param totalCount 总记录数.
+     * @param numPerPage 每页记录数.
      * @return totalPage 总页数.
      */
     public static int countTotalPage(int totalCount, int numPerPage) {
-        if (totalCount % numPerPage == 0) {
-            // 刚好整除
+        if (totalCount % numPerPage == 0) {// 刚好整除
             return totalCount / numPerPage;
-        } else {
-            // 不能整除则总页数为：商 + 1
+        } else {// 不能整除则总页数为：商 + 1
             return totalCount / numPerPage + 1;
         }
     }
@@ -60,12 +57,9 @@ public class PageBean<T> implements Serializable {
      * 3、判断currentPage是否小于1，小于则返回1.<br/>
      * 4、其它则直接返回currentPage .
      * 
-     * @param totalCount
-     *            要分页的总记录数 .
-     * @param numPerPage
-     *            每页记录数大小 .
-     * @param currentPage
-     *            输入的当前页数 .
+     * @param totalCount   要分页的总记录数 .
+     * @param numPerPage   每页记录数大小 .
+     * @param currentPage   输入的当前页数 .
      * @return currentPage .
      */
     public static int checkCurrentPage(int totalCount, int numPerPage,
@@ -90,8 +84,7 @@ public class PageBean<T> implements Serializable {
      * 1、当页面输入的每页记录数numPerPage大于允许的最大每页记录数MAX_PAGE_SIZE时，返回MAX_PAGE_SIZE.
      * 2、如果numPerPage小于1，则返回默认的每页记录数DEFAULT_PAGE_SIZE.
      * 
-     * @param numPerPage
-     *            页面输入的每页记录数 .
+     * @param numPerPage    页面输入的每页记录数 .
      * @return checkNumPerPage .
      */
     public static int checkNumPerPage(int numPerPage) {
@@ -106,7 +99,6 @@ public class PageBean<T> implements Serializable {
 
     /**
      * 只接受前4个必要的属性，会自动的计算出其他3个属生的值
-     * 
      * @param currentPage
      * @param numPerPage
      * @param totalCount
