@@ -14,7 +14,6 @@ import java.util.*;
 /**
  * <p>Title:mapper.shiro 缓存管理器类 </p>
  * <p>Description: 包装Spring cache抽象. </p>
- *
  * @author edgar 【zbo@51qmz.cn】
  * @version 1.0
  * @create 2016 08 16 17:29
@@ -32,7 +31,7 @@ public class SpringCacheManagerWrapper implements CacheManager{
 	}
 
 	/**
-	 * 获取缓存 （重新父类方法）
+	 * 获取缓存 （重写父类方法）
 	 * @param name
 	 * @param <K>
 	 * @param <V>

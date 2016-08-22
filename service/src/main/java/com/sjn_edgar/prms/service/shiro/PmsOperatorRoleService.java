@@ -31,8 +31,6 @@ public interface PmsOperatorRoleService {
 	 */
 	public String getRoleIdsByOperatorId(Long operatorId);
 
-
-
 	/**
 	 * 根据角色ID查询用户
 	 * @param roleId

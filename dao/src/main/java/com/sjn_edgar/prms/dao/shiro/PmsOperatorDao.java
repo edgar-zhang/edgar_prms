@@ -2,7 +2,6 @@ package com.sjn_edgar.prms.dao.shiro;
 /*
 * Copyright (c) 2016 www.51cjhb.com. All Rights Reserved.
 */
-
 import com.sjn_edgar.prms.dao.common.PermissionBaseDao;
 import com.sjn_edgar.prms.domain.shiro.PmsOperator;
 

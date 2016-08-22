@@ -9,6 +9,32 @@
 	<script type="text/javascript" language="javascript" src="${baseURL }/static/js/system/login.js"></script>
 </head>
 
+<script src="${baseURL}/static/js/common/jquery-2.1.4.js" type="text/javascript">
+/*	$(".rcCaptcha-btn").click(function(){
+		alert(1234);
+
+		// 动作触发后执行的代码!!
+		$("#rcCaptcha-img").attr(
+				"src",
+				'${baseURL}/rcCaptcha.jpg?'+ new Date().getTime());
+	});
+	alert(123);*/
+
+	$("#rcCaptcha-img").click(
+			function(){
+				alert(1234);
+			}
+	);
+	/*$(function() {
+	 alert(1234);
+	 $(".rcCaptcha-btn").click(
+	 function() {
+	 $(".rcCaptcha-img").attr(
+	 "src",'${baseURL}/rcCaptcha.jpg?'+ new Date().getTime());
+	 });
+	 alert(123);
+	 });*/
+</script>
 <body>
 <div id="login">
 	<div id="login_header">
@@ -26,6 +52,7 @@
 				</ul>
 			</div>
 			<h2 class="login_title">
+				<%--TODO 登陆logo 图片--%>
 				<img src="${baseURL }/static/dwz/themes/default/images/login_title.png" />
 			</h2>
 		</div>
@@ -64,7 +91,7 @@
 
 							<li>
 								<%--TODO 验证码图片设置 --%>
-									<span> <img class="rcCaptcha-btn rcCaptcha-img" src="${baseURL}/rcCaptcha.jpg" alt="点击更换验证码" title="点击更换验证码" width="65" height="24" />
+									<span> <img class="rcCaptcha-btn"  id="rcCaptcha-img" src="${baseURL}/rcCaptcha.jpg" alt="点击更换验证码" title="点击更换验证码" width="65" height="24" />
 									</span>
 							</li>
 						</ul>
@@ -97,16 +124,5 @@
 	</div>
 </div>
 
-<script>
-	$(function() {
-		$(".rcCaptcha-btn").click(
-				function() {
-					$(".rcCaptcha-img").attr(
-							"src",
-							'${baseURL}/rcCaptcha.jsp?'
-							+ new Date().getTime());
-				});
-	});
-</script>
 </body>
 </html>

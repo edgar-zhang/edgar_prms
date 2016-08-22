@@ -2,6 +2,7 @@ package com.sjn_edgar.prms.payhome.web.common;/*
 * Copyright (c) 2016 www.51cjhb.com. All Rights Reserved.
 */
 
+import com.sjn_edgar.prms.domain.shiro.PmsOperator;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -31,11 +32,10 @@ public abstract class BaseContrller {
 	 *
 	 * @return
 	 */
-	/*protected PmsOperator getPmsOperator() {
+	protected PmsOperator getPmsOperator() {
 		PmsOperator operator = (PmsOperator) this.getSession().getAttribute("PmsOperator");
 		return operator;
 	}
-*/
 
 
 }
